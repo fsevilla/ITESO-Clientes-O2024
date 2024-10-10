@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { UsersListComponent } from "./users-list/users-list.component";
 import { UserDetailsComponent } from "./user-details/user-details.component";
-import { User } from '../../types/user';
+import { User } from '../../../types/user';
 
 @Component({
   selector: 'app-users',

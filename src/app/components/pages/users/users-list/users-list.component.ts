@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { UserService } from '../../../services/user.service';
-import { User } from '../../../types/user';
+import { UserService } from '../../../../services/user.service';
+import { User } from '../../../../types/user';
 import { CommonModule } from '@angular/common';
 
 @Component({

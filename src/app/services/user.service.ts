@@ -15,4 +15,6 @@ export class UserService {
     const url = `${environment.apiUrl}users`
     return this.httpClient.get<User[]>(url);
   }
+
+  signup() {}
 }
