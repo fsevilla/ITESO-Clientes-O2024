@@ -1,0 +1,9 @@
+<h1>Users</h1>
+<div class="panels">
+    <div>
+        <app-users-list [selectedUser]="selectedUser" (onUserSelected)="selectUser($event)"></app-users-list>
+    </div>
+    <div>
+        <app-user-details [user]="selectedUser" (onClearUser)="clearUser()"></app-user-details>
+    </div>
+</div>

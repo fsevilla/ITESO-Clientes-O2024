@@ -1,0 +1,10 @@
+
+@if (user) {
+    <p>{{user.name}}</p>
+
+    <button (click)="clearUser()">Clear</button>
+}
+
+@if (!user) {
+    <p>No user selected</p>
+}
