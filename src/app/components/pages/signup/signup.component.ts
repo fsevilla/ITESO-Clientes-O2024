@@ -1,29 +1,42 @@
 import { Component } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-signup',
   standalone: true,
-  imports: [FormsModule],
+  imports: [FormsModule, ReactiveFormsModule],
   templateUrl: './signup.component.html',
   styleUrl: './signup.component.scss'
 })
 export class SignupComponent {
 
-  datos = {
-    name: 'Juan Perez',
-    email: 'juan@email.com',
-    password: 'Hola123',
-    confirm: 'Hola1234567890',
-    accept: false
+
+  form: FormGroup;
+
+  constructor(formBuilder: FormBuilder) {
+    this.form = formBuilder.group({
+      name: ['', [Validators.required, Validators.minLength(2)]],
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.minLength(8)]],
+      confirm: ['', [Validators.required, Validators.minLength(8)]],
+      accept: [false, Validators.requiredTrue]
+    }, {
+      validators: [() => this.passwordsMatch()]
+    });
+  }
+
+  passwordsMatch() {
+    if (!this.form) return null;
+    const { password, confirm } = this.form.getRawValue();
+    return password === confirm ? null : { passwordsMatch: true }
   }
 
   signup() {
-    if (this.datos.accept) {
-      console.log('Enviar datos...', this.datos);
-      this.datos.name = '';
+    console.log('Form? ', this.form);
+    if (this.form.valid) {
+      console.log('Enviar datos????', this.form.getRawValue());
     } else {
-      alert('Debes aceptar');
+      alert('Debes llenar todos los campos');
     }
   }
 

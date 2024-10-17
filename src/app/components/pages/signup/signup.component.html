@@ -1,30 +1,30 @@
 <div>
     <h2>Sign up</h2>
-    <form (submit)="signup()">
+    <form [formGroup]="form" (submit)="signup()">
         <div>
             <label for="name">Name: </label>
-            <input type="text" name="name" [(ngModel)]="datos.name">
+            <input type="text" name="name" formControlName="name">
         </div>
         <div>
             <label for="email">Email:</label>
-            <input type="email" name="email" [(ngModel)]="datos.email">
+            <input type="email" name="email" formControlName="email">
         </div>
         <div>
             <label for="password">Password: </label>
-            <input type="password" name="password">
+            <input type="password" name="password" formControlName="password">
         </div>
         <div>
             <label for="confirm">Confirm password: </label>
-            <input type="password" name="confirm">
+            <input type="password" name="confirm" formControlName="confirm">
         </div>
         <div>
             <label>
-                <input name="terms" type="checkbox" [(ngModel)]="datos.accept"> 
+                <input name="terms" type="checkbox" formControlName="accept"> 
                 Accept terms and conditions
             </label>
         </div>
         <div>
-            <button [disabled]="!datos.accept">Save</button>
+            <button [disabled]="form.invalid">Save</button>
         </div>
     </form>
 </div>
