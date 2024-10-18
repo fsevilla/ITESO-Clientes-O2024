@@ -1,5 +1,8 @@
 <ul>
     @for (user of users; track $index) {
-        <li [ngClass]="{'selected': user === selectedUser}" (click)="selectUser(user)">{{user.name}}</li>
+        <li [ngClass]="{'selected': user === selectedUser}" (click)="selectUser(user)">
+            {{user.name}}
+            <a [routerLink]="user.id" (click)="setSelectedUser(user)">Ver mas</a>
+        </li>
     }
 </ul>

@@ -9,6 +9,8 @@ import { environment } from '../../environments/environment';
 })
 export class UserService {
 
+  private selectedUser: User | undefined;
+
   constructor(private httpClient: HttpClient) { }
 
   getAll(): Observable<User[]> {
@@ -17,4 +19,12 @@ export class UserService {
   }
 
   signup() {}
+
+  setSelectedUser(user: User) {
+    this.selectedUser = user;
+  }
+
+  getSelectedUser(): User | undefined {
+    return this.selectedUser;
+  }
 }
