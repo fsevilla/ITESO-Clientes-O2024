@@ -1,1 +1,8 @@
-<p>header works!</p>
+<header>
+    <span>My App</span>
+    <span>Clicks: {{counter}}</span>
+    <input type="text" readonly [ngModel]="counter">
+
+    <a routerLink="/login" *appAuthState="false">Log in</a>
+    <a routerLink="/logout" *appAuthState="true">Log out</a>
+</header>
